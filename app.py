@@ -10,7 +10,7 @@ st.title("🪔 Diwali Sales Data Analysis Dashboard")
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('Diwali Sales Data.csv', encoding='unicode_escape')
+    df = pd.read_csv('"C:\Users\odurg\Downloads\Python_Diwali_Sales_Analysis-main (2)\Python_Diwali_Sales_Analysis-main\Diwali Sales Data.csv"', encoding='unicode_escape')
     df.drop(['Status', 'unnamed1'], axis=1, errors='ignore', inplace=True)
     df.dropna(inplace=True)
     df['Amount'] = df['Amount'].astype(int)
