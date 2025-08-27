@@ -1,4 +1,3 @@
-pip install seaborn pandas matplotlib
 import streamlit as st 
 import pandas as pd 
 import seaborn as sns 
