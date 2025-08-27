@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # Streamlit page configuration
 st.set_page_config(page_title="Diwali Sales Dashboard", layout="wide")
-st.title("🪔 Diwali Sales Data Analysis Dashboard")
+st.title("Diwali Sales Data Analysis Dashboard")
 
 # Load data
 @st.cache_data
@@ -19,11 +19,11 @@ def load_data():
 df = load_data()
 
 # Dataset preview
-with st.expander("🔍 Preview Dataset"):
+with st.expander(" Preview Dataset"):
     st.dataframe(df)
 
 # Gender-based Analysis
-st.subheader("👫 Gender-based Analysis")
+st.subheader(" Gender-based Analysis")
 col1, col2 = st.columns(2)
 
 with col1:
@@ -42,7 +42,7 @@ with col2:
     st.pyplot(fig2)
 
 # Age Group-wise Analysis
-st.subheader("🎂 Age Group-wise Analysis")
+st.subheader("Age Group-wise Analysis")
 fig3, ax3 = plt.subplots()
 sns.countplot(data=df, x='Age Group', hue='Gender', ax=ax3)
 for container in ax3.containers:
@@ -57,7 +57,7 @@ ax4.set_title("Sales by Age Group")
 st.pyplot(fig4)
 
 # State-wise Analysis
-st.subheader("📍 Top 10 States by Orders & Sales")
+st.subheader("Top 10 States by Orders & Sales")
 
 sales_state_orders = df.groupby('State', as_index=False)['Orders'].sum().sort_values(by='Orders', ascending=False).head(10)
 fig5, ax5 = plt.subplots(figsize=(15, 5))
@@ -74,7 +74,7 @@ plt.xticks(rotation=45)
 st.pyplot(fig6)
 
 # Marital Status & Gender
-st.subheader("💍 Sales by Marital Status and Gender")
+st.subheader("Sales by Marital Status and Gender")
 sales_marital = df.groupby(['Marital_Status', 'Gender'], as_index=False)['Amount'].sum()
 fig7, ax7 = plt.subplots(figsize=(6, 5))
 sns.barplot(data=sales_marital, x='Marital_Status', y='Amount', hue='Gender', ax=ax7)
@@ -82,7 +82,7 @@ ax7.set_title("Sales by Marital Status")
 st.pyplot(fig7)
 
 # Occupation Analysis
-st.subheader("💼 Occupation-based Sales Analysis")
+st.subheader("Occupation-based Sales Analysis")
 
 fig8, ax8 = plt.subplots(figsize=(20, 5))
 sns.countplot(data=df, x='Occupation', ax=ax8)
@@ -100,7 +100,7 @@ plt.xticks(rotation=45)
 st.pyplot(fig9)
 
 # Product Category Analysis
-st.subheader("📦 Product Category Sales Analysis")
+st.subheader("Product Category Sales Analysis")
 
 fig10, ax10 = plt.subplots(figsize=(20, 5))
 sns.countplot(data=df, x='Product_Category', ax=ax10)
@@ -118,7 +118,7 @@ plt.xticks(rotation=45)
 st.pyplot(fig11)
 
 # Product-wise Top Sellers
-st.subheader("🏆 Top 10 Selling Products by Orders")
+st.subheader("Top 10 Selling Products by Orders")
 top_products = df.groupby('Product_ID')['Orders'].sum().nlargest(10)
 fig12, ax12 = plt.subplots(figsize=(12, 6))
 top_products.plot(kind='bar', ax=ax12)
@@ -129,4 +129,4 @@ st.pyplot(fig12)
 
 # Footer
 st.markdown("---")
-st.markdown("📊 Built with Streamlit | 📁 Data Source: Diwali Sales CSV")
+st.markdown("Built with Streamlit | Data Source: Diwali Sales CSV")
